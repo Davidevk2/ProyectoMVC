@@ -1,6 +1,9 @@
+using System.ComponentModel.DataAnnotations;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Solucion.Data;
+using Solucion.Models;
 
 namespace Solucion.Controllers
 {
@@ -24,8 +27,22 @@ namespace Solucion.Controllers
             /* SELECT * from Users WHERE Id = id */
         }
 
+        /* Vista para crear usuario */
         public IActionResult Create(){
             return View();
+        }
+        [HttpPost]
+        public  IActionResult Create(User u){
+
+            if(ModelState.IsValid){
+
+                _context.Users.Add(u);
+                _context.SaveChanges();
+                return  RedirectToAction("Index");
+            }else{
+                return View(u);
+
+            }
         }
     }
 }

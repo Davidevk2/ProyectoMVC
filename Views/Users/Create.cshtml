@@ -5,7 +5,8 @@
 
 <h1>Create</h1>
 
-<form asp-action="" method="post">
+<form asp-action="Create" method="post">
+    <div asp-asp-validation-summary="All"></div> @* Mostrar errores  *@ 
     <div class="form-group">
         <label for="">Names:</label>
         <input asp-for="Names" class="form-control">
