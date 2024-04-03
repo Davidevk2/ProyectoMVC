@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.ObjectPool;
 using Solucion.Data;
 using Solucion.Models;
 
@@ -44,5 +45,17 @@ namespace Solucion.Controllers
 
             }
         }
+
+        public async Task<IActionResult> Delete(int id){
+            
+            var user = await _context.Users.FindAsync(id); //Buscar el user por su id
+            _context.Users.Remove(user); //Eliminar el usuario en el Dbset
+            _context.SaveChanges(); //Guardar los cambios en el context 
+
+            return RedirectToAction("Index"); //volver a la vista usuarios
+        }
+
+
+
     }
 }
