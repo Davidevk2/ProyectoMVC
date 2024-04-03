@@ -1,0 +1,30 @@
+@{
+    ViewData["title"] = "Index";
+}
+
+<h1>Index de los usuarios </h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Names</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>BirthDate</th>
+            <th>Address</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    @foreach(var item in Model){
+        <tr>
+            <td>@item.Names</td>
+            <td>@item.Names</td>
+            <td>@item.Names</td>
+            <td>@item.Names</td>
+            <td>@item.Names</td>
+            <td>@item.Names</td>
+        </tr>
+        
+    }
+</table>

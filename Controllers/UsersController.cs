@@ -13,5 +13,9 @@ namespace Solucion.Controllers
         public UsersController(BaseContext context){
             _context = context;
         }
+
+        public async Task<IActionResult> Index(){
+            return View(await _context.Users.ToListAsync());
+        }
     }
 }
