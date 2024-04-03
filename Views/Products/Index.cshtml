@@ -1,0 +1,31 @@
+@{ViewData["title"]= "Products";}
+
+<h2>Product List </h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Amount</th>
+            <th>Expiration Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    @foreach(var item in Model){
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.Price</td>
+            <td>@item.Amount</td>
+            <td>@item.ExpirationDate</td>
+            <td><a class="btn btn-sm btn-primary" asp-action="Details" asp-controller="Products" asp-route-id="@item.Id">Details</a>
+            <a class="btn btn-sm btn-warning" asp-action="Details" asp-controller="Products" asp-route-id="@item.Id">Edit</a>
+            <a class="btn btn-sm btn-danger" asp-action="Details" asp-controller="Products" asp-route-id="@item.Id">Delete</a></td>
+        </tr>
+
+    }
+</table>
