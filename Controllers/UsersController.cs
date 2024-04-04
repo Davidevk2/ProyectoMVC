@@ -28,22 +28,21 @@ namespace Solucion.Controllers
             /* SELECT * from Users WHERE Id = id */
         }
 
-        /* Vista para crear usuario */
-        public IActionResult Create(){
+        // action para crear vista create
+        public  IActionResult Create(){
             return View();
         }
+
+        // action para registrar en la db
         [HttpPost]
-        public  IActionResult Create(User u){
-
-            if(ModelState.IsValid){
-
-                _context.Users.Add(u);
-                _context.SaveChanges();
-                return  RedirectToAction("Index");
-            }else{
-                return View(u);
-
-            }
+        public IActionResult Create(User u){
+            //Agregar el usuario al DbSet 
+            _context.Users.Add(u);
+            //Guardar los cambios en DbSet en la db
+            _context.SaveChanges();
+            //Redireciona a la lista de usuarios
+            return  RedirectToAction("Index");
+           
         }
 
         public async Task<IActionResult> Delete(int id){
