@@ -55,6 +55,19 @@ namespace Solucion.Controllers
         }
 
 
+        public async Task<IActionResult> Edit(int id){
+            return View(await _context.Users.FindAsync(id));
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> Update(User user){
+
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }
