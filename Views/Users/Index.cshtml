@@ -3,7 +3,15 @@
 }
 
 <h1>Index de los usuarios </h1>
-<a  class="btn btn-sm btn-success" asp-controller="Users" asp-action="Create">Create New User</a>
+<div class="row mt-2">
+<div class="col">
+    <a class="d-flex float-start btn btn-success" asp-controller="Users" asp-action="Create">Create User</a>
+    <form class="d-flex float-end"  asp-action="Index" method="post">
+        <input type="search" class="form-control me-2" name="search" placeholder="Search"  aria-label="search">
+        <button class="btn btn-outline-success" >Search</button>
+    </form>
+</div>
+</div>
 <table class="table">
     <thead>
         <tr>

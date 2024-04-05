@@ -1,7 +1,16 @@
 @{ViewData["title"]= "Products";}
 
 <h2>Product List </h2>
+<div class="row">
 <a asp-controller="Products" asp-action="Create">Create</a>
+<div class="col-md-4">
+    <form action="" method="">
+        <label for="">Search:</label>
+        <input type="search"  class="form-control" placeholder="Search">
+        <button class="btn btn-primary">Search</button>
+    </form>
+</div>
+</div>
 <table class="table">
     <thead>
         <tr>

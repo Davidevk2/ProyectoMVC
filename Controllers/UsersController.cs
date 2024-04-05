@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
-
+using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.ObjectPool;
 using Solucion.Data;
 using Solucion.Models;
+using System.Linq;
 
 namespace Solucion.Controllers
 {
@@ -19,8 +20,13 @@ namespace Solucion.Controllers
         }
 
         /* Actions para las vistas  */
-        public async Task<IActionResult> Index(){
-            return View(await _context.Users.ToListAsync());
+        public async Task<IActionResult> Index(string search){
+            //Coleccion de registros u objetos  
+            var users = from user in _context.Users select user;
+            if(!string.IsNullOrEmpty(search)){
+                users = users.Where(u => u.Names.Contains(search) || u.LastNames.Contains(search)); 
+            }
+            return View(await users.ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id){
